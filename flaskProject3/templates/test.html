@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+    <link rel="stylesheet" href="../static/test.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <h1>Test</h1>
+        <br>
+        <hr>
+        <form method="post" action="/compare">
+            <div id="training_inputs"></div>
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+        <br>
+    </div>
+
+    <script>
+
+        var numExamples = {{ num_examples }};
+        var myList = {{ Questions | tojson | safe }};
+        var trainingInputsDiv = document.getElementById("training_inputs");
+        trainingInputsDiv.innerHTML = "";
+
+        for (var i = 0; i < numExamples; i++) {
+            var exampleDiv = document.createElement("div");
+            exampleDiv.style.display = "flex";
+            exampleDiv.style.flexDirection = "column";
+            exampleDiv.style.marginBottom = "15px";
+
+            var labelLine1 = document.createElement("div");
+            labelLine1.style.display = "flex";
+            labelLine1.style.flexDirection = "column";
+            labelLine1.style.marginBottom = "15px";
+
+            var inputLabel = document.createElement("label");
+            inputLabel.setAttribute("for", "train_input_" + i);
+            inputLabel.textContent = "Question " + (i + 1) + ": " + myList[i];
+            inputLabel.style.color = "#555";
+
+            var outputTextbox = document.createElement("input");
+            outputTextbox.setAttribute("type", "text");
+            outputTextbox.setAttribute("id", "train_output_" + i);
+            outputTextbox.setAttribute("name", "train_output_" + i);
+            outputTextbox.setAttribute("required", true);
+
+            labelLine1.appendChild(inputLabel);
+            labelLine1.appendChild(outputTextbox);
+
+            exampleDiv.appendChild(labelLine1);
+
+            trainingInputsDiv.appendChild(exampleDiv);
+            trainingInputsDiv.appendChild(document.createElement("hr"))
+            trainingInputsDiv.appendChild(document.createElement("br"))
+
+        }
+
+    </script>
+
+</body>
+</html>
+
+
+

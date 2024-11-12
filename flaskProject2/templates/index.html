@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generative AI Web App</title>
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Generative AI Web App</h1>
+
+        <h2>Training:</h2>
+        <form method="post" action="/train">
+            <label for="num_examples">Number of training examples:</label>
+            <input type="number" id="num_examples" name="num_examples" min="1" required>
+            <button type="button" onclick="createTrainingInputs()">Create Training Examples</button>
+
+            <div id="training_inputs"></div>
+
+            <button type="submit">Train Model</button>
+        </form>
+
+        {% if training_result %}
+        <div class="result">
+            <h2>Training Result:</h2>
+            <p>{{ training_result }}</p>
+        </div>
+        {% endif %}
+
+        <h2>Testing:</h2>
+        <form method="post" action="/test">
+            <label for="test_input">Enter testing input:</label>
+            <input type="text" id="test_input" name="test_input" required>
+            <button type="submit">Generate Response</button>
+        </form>
+
+        {% if test_input %}
+        <div class="result">
+            <h2>Testing Input:</h2>
+            <p>{{ test_input }}</p>
+        </div>
+        {% endif %}
+
+        {% if generated_response %}
+        <div class="result">
+            <h2>Generated Response:</h2>
+            <p>{{ generated_response }}</p>
+        </div>
+        {% endif %}
+    </div>
+
+    <script src="../static/script.js"></script>
+</body>
+</html>

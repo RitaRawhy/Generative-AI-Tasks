@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generative AI Demo</title>
+    <link rel="stylesheet" href="../static/styles.css" >
+</head>
+<body>
+    <div class="container">
+        <h1>Generative AI Demo</h1>
+        <form method="POST">
+            <label for="prompt">Enter a prompt:</label>
+            <input type="text" id="prompt" name="prompt">
+            <br>
+            <input type="submit" value="Generate Response">
+        </form>
+        <div class="response">
+            <h2>Generated Response:</h2>
+            <div class="response-text">
+                {{ response_text }}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

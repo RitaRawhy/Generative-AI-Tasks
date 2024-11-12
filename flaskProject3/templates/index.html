@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Creation</title>
+    <link rel="stylesheet" href="../static/index.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Questions</h1>
+
+        <form method="post" action="/student">
+            <h2>Number of Questions:</h2>
+            <input type="number" id="num_examples" name="num_examples" min="1" required>
+            <button type="button" onclick="createTrainingInputs()">Create Questions</button>
+
+            <div id="training_inputs"></div>
+
+            <button id="CreateTest" type="submit">Create Test</button>
+        </form>
+
+        <script src="../static/index.js"></script>
+    </div>
+</body>
+</html>
